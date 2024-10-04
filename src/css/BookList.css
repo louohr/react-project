@@ -1,0 +1,88 @@
+.main-booklist {
+    width: 100%;
+    max-width: 400px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}
+
+.header {
+    text-align: center;
+    color: white;
+}
+
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.book-card {
+    min-width: 200px;
+    max-width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    height: 100%;
+}
+
+.book-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.book-card h3 {
+    margin: 0.8rem 0;
+    font-size: 1rem;
+    text-align: center;
+    color: #333;
+    width: 80%;
+    overflow: hidden;
+}
+
+.book-card .bookcover {
+    flex-grow: 1;
+}
+
+.book-card .remove-btn {
+    background-color: #1a0e0e;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: auto;
+    transition: background-color 0.3s ease;
+}
+
+.bookcover:hover {
+    opacity: 50%;
+    cursor: pointer;
+}
+
+.remove-btn {
+    background-color: #1a0e0e;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 0.8rem;
+    transition: background-color 0.3s ease;
+}
+
+.remove-btn:hover {
+    background-color: #494949;
+}

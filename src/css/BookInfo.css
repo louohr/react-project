@@ -1,0 +1,57 @@
+.bookinfo {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #413C3A;
+    border-radius: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.bookinfo h1 {
+    font-size: 2rem;
+    color: #f4f4f4;
+    text-align: center;
+}
+
+.bookinfo h2 {
+    font-size: 1.5rem;
+    color: #555;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.bookinfo ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+.bookinfo li {
+    font-size: 1rem;
+    color: #f4f4f4;
+    padding: 8px 0;
+    border-radius: 1px solid #ddd;
+}
+
+.bookinfo li:last-child {
+    border-bottom: none;
+}
+
+.bookinfo li span {
+    font-weight: bold;
+    color: #333;
+}
+
+.bookinfo li:hover {
+    background-color: #555;
+}
+
+.bookinfo-image {
+    max-width: 50%;
+    max-height: 50%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
