@@ -1,31 +1,42 @@
 import { useState } from "react";
+import { useBooks } from "../context/context";
 import "../css/FormPage.css";
 
-interface BookFormProps {
-  AddBook: (book: {
-    title: string;
-    author: string;
-    pages: number;
-    isbn: number;
-    cover: string;
-    genre: string;
-  }) => void;
+// Book interface
+export interface IBook {
+  title: string;
+  author: string;
+  pages: number;
+  isbn: number;
+  cover: string;
+  genre: string;
 }
 
-function FormPage({ AddBook }: BookFormProps) {
+function FormPage() {
+  const { addBook } = useBooks(); // hämta addBook function från context
+
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
-  const [pages, setPages] = useState("");
-  const [isbn, setIsbn] = useState("");
+  const [pages, setPages] = useState<number | "">("");
+  const [isbn, setIsbn] = useState<number | "">("");
   const [cover, setCover] = useState("");
   const [genre, setGenre] = useState("");
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    const newBook = { title, author, pages, isbn, cover, genre };
-    AddBook(newBook);
 
-    // Återställer till tomma fält
+    const newBook: IBook = {
+      title,
+      author,
+      pages: Number(pages),
+      isbn: Number(isbn),
+      cover,
+      genre,
+    };
+
+    addBook(newBook);
+
+    // återställ fälten
     setTitle("");
     setAuthor("");
     setPages("");
@@ -41,6 +52,7 @@ function FormPage({ AddBook }: BookFormProps) {
           <section className="form-group">
             <h1>Add a book</h1>
             <h2>Fill out this form to add a book to the collection</h2>
+
             <label>Title</label>
             <input
               required
@@ -53,6 +65,7 @@ function FormPage({ AddBook }: BookFormProps) {
           <section className="form-group">
             <label>Author</label>
             <input
+              required
               placeholder="Author"
               value={author}
               onChange={(e) => setAuthor(e.target.value)}
@@ -61,22 +74,39 @@ function FormPage({ AddBook }: BookFormProps) {
 
           <section className="form-group">
             <label>Pages</label>
-            <input placeholder="0000" value={pages} onChange={(e) => setPages(e.target.value)} />
+            <input
+              required
+              type="number"
+              placeholder="0000"
+              value={pages}
+              onChange={(e) => setPages(e.target.value === "" ? "" : Number(e.target.value))}
+            />
           </section>
 
           <section className="form-group">
             <label>ISBN</label>
-            <input placeholder="0000" value={isbn} onChange={(e) => setIsbn(e.target.value)} />
+            <input
+              required
+              type="number"
+              placeholder="0000"
+              value={isbn}
+              onChange={(e) => setIsbn(e.target.value === "" ? "" : Number(e.target.value))}
+            />
           </section>
 
           <section className="form-group">
             <label>Image URL</label>
-            <input placeholder="Cover" value={cover} onChange={(e) => setCover(e.target.value)} />
+            <input
+              required
+              placeholder="Cover URL"
+              value={cover}
+              onChange={(e) => setCover(e.target.value)}
+            />
           </section>
 
           <section className="form-group">
             <label>Genre</label>
-            <select value={genre} onChange={(e) => setGenre(e.target.value)}>
+            <select required value={genre} onChange={(e) => setGenre(e.target.value)}>
               <option value="">Select a genre</option>
               <option value="fantasy">Fantasy</option>
               <option value="adventure">Adventure</option>
