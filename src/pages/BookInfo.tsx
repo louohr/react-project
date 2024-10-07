@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "../css/BookInfo.css";
+import { BooksContext, useBooks } from "../context/context";
 
 // Book interface to represent the data structure
 interface Book {
@@ -17,6 +18,7 @@ const BookInfo = () => {
   const [bookInfo, setBookInfo] = useState<Book | null>(null);
   const [loading, setLoading] = useState<Boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const { books } = useBooks();
 
   const fetchBookInfo = async () => {
     if (!id) {
@@ -27,8 +29,7 @@ const BookInfo = () => {
 
     setLoading(true);
     try {
-      const response = await fetch("https://majazocom.github.io/Data/books.json");
-      const data: Book[] = await response.json();
+      const data = books;
 
       const book = data[parseInt(id)]; // Parse id to an integer
       if (!book) {

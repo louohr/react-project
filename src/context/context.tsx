@@ -10,7 +10,7 @@ interface BooksContextType {
 }
 
 // skapar context
-const BooksContext = createContext<BooksContextType | undefined>(undefined);
+export const BooksContext = createContext<BooksContextType | undefined>(undefined);
 
 // Provider component
 export const BooksProvider = ({ children }: { children: ReactNode }) => {
