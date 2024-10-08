@@ -86,3 +86,13 @@
 .remove-btn:hover {
     background-color: #494949;
 }
+
+.nobooks-msg {
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-top: 14rem;
+}

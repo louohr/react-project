@@ -16,7 +16,15 @@ function BookList() {
   const { books, removeBook } = useBooks();
 
   if (books.length === 0) {
-    return <div>No books available. Add some books!</div>;
+    return (
+      <div>
+        <div className="nobooks-msg">No books in the collection. Add some books!</div>;
+        <Link to="/form">
+          <button className="addbook-btn">Add book</button>
+        </Link>
+        ;
+      </div>
+    );
   }
 
   return (
