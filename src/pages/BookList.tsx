@@ -13,7 +13,7 @@ export interface IBook {
 }
 
 function BookList() {
-  const { books } = useBooks();
+  const { books, removeBook } = useBooks();
 
   if (books.length === 0) {
     return <div>No books available. Add some books!</div>;
@@ -30,7 +30,9 @@ function BookList() {
                 <img className="bookcover" src={book.cover} alt={book.title} />
               </Link>
               <h3>{book.title}</h3>
-              <button className="remove-btn">Remove</button>
+              <button className="remove-btn" onClick={() => removeBook(index)}>
+                Remove
+              </button>
             </article>
           ))}
         </section>

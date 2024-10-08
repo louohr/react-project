@@ -4,9 +4,10 @@ import { IBook } from "../pages/BookList";
 // Define the shape of the context
 interface BooksContextType {
   books: IBook[];
-  addBook: (book: IBook) => void;
+  addBook: (book: IBook) => void; // lägga till bok
   loading: boolean;
   error: string | null;
+  removeBook: (index: number) => void; // ta bort bok
 }
 
 // skapar context
@@ -40,13 +41,18 @@ export const BooksProvider = ({ children }: { children: ReactNode }) => {
     fetchBooks();
   }, []);
 
-  // lägger till
+  // lägger till bok
   const addBook = (book: IBook) => {
     setBooks((prevBooks) => [...prevBooks, book]);
   };
 
+  // ta bort bok
+  const removeBook = (index: number) => {
+    setBooks((prevBooks) => prevBooks.filter((_, i) => i !== index));
+  };
+
   return (
-    <BooksContext.Provider value={{ books, addBook, loading, error }}>
+    <BooksContext.Provider value={{ books, addBook, loading, error, removeBook }}>
       {children}
     </BooksContext.Provider>
   );
