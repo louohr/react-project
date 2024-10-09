@@ -18,7 +18,9 @@ const BookInfo = () => {
   const [bookInfo, setBookInfo] = useState<Book | null>(null);
   const [loading, setLoading] = useState<Boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const { books } = useBooks();
+  const { books, updateBook } = useBooks();
+  const [isEditing, setIsEditing] = useState<boolean>(false);
+  const [editableBookInfo, setEditableBookInfo] = useState<Book | null>(null);
 
   const fetchBookInfo = async () => {
     if (!id) {
@@ -36,6 +38,7 @@ const BookInfo = () => {
         setError("Book not found");
       } else {
         setBookInfo(book); // Set the book in the state if it exists
+        setEditableBookInfo(book);
       }
     } catch (error) {
       setError("Error loading API");
@@ -47,6 +50,26 @@ const BookInfo = () => {
   useEffect(() => {
     fetchBookInfo();
   }, [id]);
+
+  // handle form input changes
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLInputElement>) => {
+    const { name, value } = e.target;
+    if (editableBookInfo) {
+      setEditableBookInfo({
+        ...editableBookInfo,
+        [name]: name === "pages" || name === "isbn" ? parseInt(value) : value,
+      });
+    }
+  };
+
+  // handle save changes
+  const handleSave = () => {
+    if (editableBookInfo) {
+      updateBook(editableBookInfo);
+      setBookInfo(editableBookInfo);
+      setIsEditing(false);
+    }
+  };
 
   if (loading) {
     return <div>Loading...</div>;
@@ -64,15 +87,85 @@ const BookInfo = () => {
   return (
     <>
       <section className="bookinfo">
-        <h1>Book Information</h1>
-        <img className="bookinfo-image" src={bookInfo.cover} alt={bookInfo.title} />
-        <ul>
-          <li>Title: {bookInfo.title}</li>
-          <li>Author: {bookInfo.author}</li>
-          <li>Pages: {bookInfo.pages}</li>
-          <li>ISBN: {bookInfo.isbn}</li>
-          <li>Genre: {bookInfo.genre}</li>
-        </ul>
+        <h1>{isEditing ? "Edit book information" : "Book information"}</h1>
+        {isEditing ? (
+          <>
+            <label className="form-text">
+              Cover URL:
+              <input
+                type="text"
+                name="cover"
+                value={editableBookInfo?.cover || ""}
+                onChange={handleInputChange}
+              />
+            </label>
+            <label className="form-text">
+              Title:
+              <input
+                type="text"
+                name="title"
+                value={editableBookInfo?.title || ""}
+                onChange={handleInputChange}
+              />
+            </label>
+            <label className="form-text">
+              Author:
+              <input
+                type="text"
+                name="author"
+                value={editableBookInfo?.author || ""}
+                onChange={handleInputChange}
+              />
+            </label>
+            <label className="form-text">
+              Pages:
+              <input
+                type="number"
+                name="pages"
+                value={editableBookInfo?.pages || ""}
+                onChange={handleInputChange}
+              />
+            </label>
+            <label className="form-text">
+              ISBN:
+              <input
+                type="number"
+                name="isbn"
+                value={editableBookInfo?.isbn || ""}
+                onChange={handleInputChange}
+              />
+            </label>
+            <label className="form-text">
+              Genre:
+              <input
+                type="text"
+                name="genre"
+                value={editableBookInfo?.genre || ""}
+                onChange={handleInputChange}
+              />
+            </label>
+            <button className="btn save-btn" onClick={handleSave}>
+              Save
+            </button>
+            <button className="btn cancel-btn" onClick={() => setIsEditing(false)}>
+              Cancel
+            </button>
+          </>
+        ) : (
+          <>
+            <img className="bookinfo-image" src={bookInfo.cover} alt={bookInfo.title} />
+            <ul>
+              <li>Title: {bookInfo.title}</li>
+              <li>Author: {bookInfo.author}</li>
+              <li>Pages: {bookInfo.pages}</li>
+              <li>ISBN: {bookInfo.isbn}</li>
+              <li>Genre: {bookInfo.genre}</li>
+            </ul>
+            <button className="edit-btn" onClick={() => setIsEditing(true)}>
+              Edit
+            </button>
+          </>
+        )}
       </section>
     </>
   );

@@ -5,9 +5,10 @@ import { IBook } from "../pages/BookList";
 interface BooksContextType {
   books: IBook[];
   addBook: (book: IBook) => void; // lägga till bok
+  removeBook: (index: number) => void; // ta bort bok
+  updateBook: (updatedBook: IBook) => void; // uppdatera bok
   loading: boolean;
   error: string | null;
-  removeBook: (index: number) => void; // ta bort bok
 }
 
 // skapar context
@@ -51,8 +52,15 @@ export const BooksProvider = ({ children }: { children: ReactNode }) => {
     setBooks((prevBooks) => prevBooks.filter((_, i) => i !== index));
   };
 
+  // uppdatera bok
+  const updateBook = (updatedBook: IBook) => {
+    setBooks((prevBooks) => {
+      return prevBooks.map((book) => (book.isbn === updatedBook.isbn ? updatedBook : book));
+    });
+  };
+
   return (
-    <BooksContext.Provider value={{ books, addBook, loading, error, removeBook }}>
+    <BooksContext.Provider value={{ books, addBook, removeBook, updateBook, loading, error }}>
       {children}
     </BooksContext.Provider>
   );

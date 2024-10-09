@@ -55,3 +55,41 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+.edit-btn {
+    background-color: #1a0e0e;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 0.8rem;
+    transition: background-color 0.3s ease;
+}
+
+.form-text {
+    color: white;
+    margin-top: 2px;
+}
+
+.btn {
+    font-size: 1rem;
+    cursor: pointer;
+    padding: .5rem;
+    margin-bottom: .5rem;
+}
+
+.save-btn {
+    margin-right: 20px;
+    margin-top: 2px;
+}
+
+.cancel-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+.cancel-btn:hover {
+    background-color: #85211a;
+}
