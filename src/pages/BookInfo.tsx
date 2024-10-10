@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "../css/BookInfo.css";
-import { useBooks } from "../context/context";
+import { useBooks } from "../context/BooksContext";
 
 // Book interface to represent the data structure
 interface Book {
