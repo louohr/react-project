@@ -21,6 +21,7 @@ function FormPage() {
   const [isbn, setIsbn] = useState<number | "">("");
   const [cover, setCover] = useState("");
   const [genre, setGenre] = useState("");
+  const [message, setMessage] = useState<string | null>(null);
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
@@ -35,6 +36,7 @@ function FormPage() {
     };
 
     addBook(newBook);
+    setMessage(`The book was added successfully!`);
 
     // återställ fälten
     setTitle("");
@@ -43,6 +45,11 @@ function FormPage() {
     setIsbn("");
     setCover("");
     setGenre("");
+
+    // visar meddelande i tre sek
+    setTimeout(() => {
+      setMessage(null);
+    }, 3000);
   };
 
   return (
@@ -121,6 +128,8 @@ function FormPage() {
             <button type="submit">Add book</button>
           </section>
         </form>
+        {/* Visa meddelande om det inte är tomt */}
+        {message && <div className="success-message">{message}</div>}
       </section>
     </main>
   );
