@@ -52,3 +52,54 @@ button:hover,
 input[type="submit"]:hover {
     background-color: #093a14;
 }
+
+/* mindre skärmar */
+@media (max-width: 768px) {
+    main {
+        max-width: 90%;
+        margin-top: 30px;
+    }
+
+    .form {
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 1rem;
+    }
+
+    input {
+        padding: 10px;
+    }
+
+    button,
+    input[type="submit"] {
+        padding: 12px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    main {
+        max-width: 95%;
+        margin-top: 20px;
+    }
+
+    .form {
+        padding: 10px;
+    }
+
+    h2 {
+        font-size: 0.9rem;
+    }
+
+    input {
+        padding: 9px;
+    }
+
+    button,
+    input[type="submit"] {
+        padding: 12px;
+        font-size: 15px;
+    }
+}

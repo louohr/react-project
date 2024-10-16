@@ -93,3 +93,57 @@
 .cancel-btn:hover {
     background-color: #85211a;
 }
+
+/* mindre skärmar */
+@media (max-width: 768px) {
+    .bookinfo {
+        max-width: 90%;
+        padding: 15px;
+    }
+
+    .bookinfo h1 {
+        font-size: 1.8rem;
+    }
+
+    .bookinfo h2 {
+        font-size: 1.2rem;
+    }
+
+    .bookinfo li {
+        font-size: 0.9rem;
+    }
+
+    .bookinfo-image {
+        max-width: 60%;
+    }
+}
+
+@media (max-width: 480px) {
+    .bookinfo {
+        max-width: 95%;
+    }
+
+    .bookinfo h1 {
+        font-size: 1.5rem;
+    }
+
+    .bookinfo h2 {
+        font-size: 1rem;
+    }
+
+    .bookinfo li {
+        font-size: 0.8rem;
+        padding: 6px 0;
+    }
+
+    .bookinfo-image {
+        max-width: 70%;
+    }
+
+    .edit-btn,
+    .btn {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+}

@@ -71,10 +71,10 @@
     transition: background-color 0.3s ease;
 }
 
-/* .bookcover:hover {
+.bookcover:hover {
     opacity: 50%;
     cursor: pointer;
-} */
+}
 
 .remove-btn {
     background-color: #1a0e0e;
@@ -100,4 +100,61 @@
     font-size: 2rem;
     font-weight: 700;
     margin-top: 14rem;
+}
+
+/* mindre skärmar */
+@media (max-width: 1024px) {
+    .book-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .book-card {
+        padding: 1.5rem;
+    }
+
+    .book-card h3 {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .book-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .book-card {
+        padding: 1rem;
+    }
+
+    .book-card h3 {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .book-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .book-card {
+        max-width: 100%;
+        padding: 2rem;
+    }
+
+    .book-card img {
+        width: 100%;
+    }
+
+    .book-card h3 {
+        font-size: 0.8rem;
+    }
+
+    .remove-btn {
+        font-size: 0.9rem;
+        padding: 1rem;
+    }
+
+    .nobooks-msg {
+        font-size: 1.5rem;
+    }
 }
