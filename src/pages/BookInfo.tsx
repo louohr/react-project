@@ -14,7 +14,7 @@ interface Book {
 }
 
 const BookInfo = () => {
-  const { id } = useParams<{ id: string }>(); // hämta bok id från url
+  const { id } = useParams<{ id: string }>(); // Hämta ISBN från URL
   const [bookInfo, setBookInfo] = useState<Book | null>(null);
   const [loading, setLoading] = useState<Boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -24,24 +24,22 @@ const BookInfo = () => {
 
   const fetchBookInfo = async () => {
     if (!id) {
-      setError("Book ID is invalid");
+      setError("Book ISBN is invalid");
       setLoading(false);
       return;
     }
 
     setLoading(true);
     try {
-      const data = books;
-
-      const book = data[parseInt(id)]; // Parse id to an integer
+      const book = books.find((b) => b.isbn === Number(id)); // Hitta bok efter ISBN
       if (!book) {
         setError("Book not found");
       } else {
-        setBookInfo(book); // Set the book in the state if it exists
+        setBookInfo(book);
         setEditableBookInfo(book);
       }
     } catch (error) {
-      setError("Error loading API");
+      setError("Error loading book information");
     } finally {
       setLoading(false);
     }
@@ -51,7 +49,7 @@ const BookInfo = () => {
     fetchBookInfo();
   }, [id]);
 
-  // handle form input changes
+  // Hantera formulär input
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLInputElement>) => {
     const { name, value } = e.target;
     if (editableBookInfo) {
@@ -62,7 +60,7 @@ const BookInfo = () => {
     }
   };
 
-  // handle save changes
+  // Hantera sparade ändringar
   const handleSave = () => {
     if (editableBookInfo) {
       updateBook(editableBookInfo);
@@ -83,7 +81,7 @@ const BookInfo = () => {
     return <div>Book not found</div>;
   }
 
-  // renderar UI med parametrarna
+  // UI
   return (
     <>
       <section className="bookinfo">

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Eagle+Lake&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Eagle+Lake&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 .main-booklist {
     width: 100%;
@@ -11,8 +11,9 @@
 
 .header {
     text-align: center;
-    font-family: "Eagle Lake", serif;
     color: white;
+    font-family: "Eagle Lake", serif;
+    font-size: 2.1rem;
 }
 
 .book-grid {
@@ -103,6 +104,52 @@
     font-size: 2rem;
     font-weight: 700;
     margin-top: 14rem;
+    font-style: italic;
+}
+
+.controls-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    margin: 10px;
+}
+
+/* Group the sort controls (label + dropdown) */
+.sort-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sort-label {
+    margin-right: 10px;
+    color: white;
+    font-weight: bold;
+}
+
+.sort-dropdown {
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.addbook-button {
+    padding: 10px 20px;
+    background-color: #3eac51;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    margin: 20px;
+}
+
+.addbook-button:hover {
+    background-color: #093a14;
+    transform: translateY(-2px);
 }
 
 /* mindre skärmar */
