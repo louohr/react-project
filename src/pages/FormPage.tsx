@@ -102,16 +102,6 @@ function FormPage() {
           </section>
 
           <section className="form-group">
-            <label>Image URL</label>
-            <input
-              required
-              placeholder="Cover URL"
-              value={cover}
-              onChange={(e) => setCover(e.target.value)}
-            />
-          </section>
-
-          <section className="form-group">
             <label>Genre</label>
             <select required value={genre} onChange={(e) => setGenre(e.target.value)}>
               <option value="">Select a genre</option>
@@ -122,6 +112,16 @@ function FormPage() {
               <option value="tragedy">Tragedy</option>
               <option value="crime">Crime</option>
             </select>
+          </section>
+
+          <section className="form-group">
+            <label>Image URL</label>
+            <input
+              required
+              placeholder="Cover URL"
+              value={cover}
+              onChange={(e) => setCover(e.target.value)}
+            />
           </section>
 
           <section className="submit-section">
