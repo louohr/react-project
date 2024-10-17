@@ -54,7 +54,7 @@ function BookList() {
         <div className="controls-container">
           <div className="sort-controls">
             <label htmlFor="sort-order" className="sort-label">
-              Filter:
+              Sorting:
             </label>
             <select
               id="sort-order"
