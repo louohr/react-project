@@ -179,6 +179,22 @@
     .book-card h3 {
         font-size: 0.8rem;
     }
+
+    .sort-controls {
+        flex-direction: row;
+        gap: 5px;
+    }
+
+    .sort-dropdown {
+        width: 100%;
+        font-size: 13px;
+    }
+
+    .addbook-button {
+        padding: 8px 15px;
+        font-size: 13px;
+        margin: 15px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -206,5 +222,28 @@
 
     .nobooks-msg {
         font-size: 1.5rem;
+    }
+
+    .sort-controls {
+        flex-direction: row;
+        gap: 5px;
+    }
+
+    .sort-label {
+        font-size: 12px;
+        text-align: center;
+    }
+
+    .sort-dropdown {
+        width: 100%;
+        font-size: 12px;
+        padding: 4px;
+    }
+
+    .addbook-button {
+        width: 100%;
+        padding: 8px 12px;
+        font-size: 12px;
+        margin: 10px 0;
     }
 }
