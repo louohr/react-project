@@ -3,12 +3,12 @@ import { IBook } from "../pages/BookList";
 
 // Define the shape of the context
 interface BooksContextType {
-  books: IBook[];
+  books: IBook[]; // från form page
   addBook: (book: IBook) => void; // lägga till bok
   removeBook: (index: number) => void; // ta bort bok
   updateBook: (updatedBook: IBook) => void; // uppdatera bok
-  loading: boolean;
-  error: string | null;
+  loading: boolean; // hämta böckerna
+  error: string | null; // error hantering
 }
 
 // skapar context
@@ -17,8 +17,8 @@ export const BooksContext = createContext<BooksContextType | undefined>(undefine
 // Provider component
 export const BooksProvider = ({ children }: { children: ReactNode }) => {
   const [books, setBooks] = useState<IBook[]>([]); // listan med böcker
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(true); // hämtar böcker
+  const [error, setError] = useState<string | null>(null); // error hantering
 
   // hämtar från api
   useEffect(() => {
