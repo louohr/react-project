@@ -16,7 +16,7 @@ export const BooksContext = createContext<BooksContextType | undefined>(undefine
 
 // Provider component
 export const BooksProvider = ({ children }: { children: ReactNode }) => {
-  const [books, setBooks] = useState<IBook[]>([]);
+  const [books, setBooks] = useState<IBook[]>([]); // listan med böcker
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 

@@ -18,6 +18,7 @@ function BookList() {
   const [sortOrder, setSortOrder] = useState<string>("");
 
   // Sortering funktion
+  // sorterar alfabetiskt och sidor
   const sortBooks = (books: IBook[]) => {
     switch (sortOrder) {
       case "alphabetical":
@@ -29,7 +30,7 @@ function BookList() {
     }
   };
 
-  // Hantera sorterings val från drop down
+  // Hantera sorterings val från drop down uppdaterar det valda värdet
   const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSortOrder(event.target.value);
   };
