@@ -1,6 +1,6 @@
 # Book Collection
 
-Final project for Lexicon frontend.
+Final project for Lexicon frontend with React and TypeScript.
 
 ## Description
 
